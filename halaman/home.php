@@ -13,8 +13,8 @@
     <header class="fixed top-0 left-0 w-full px-24 py-6 flex justify-between items-center shadow-none transition-all -translate-y-0 z-10">
       <h1 class="font-medium text-lg">Clothing</h1>
       <ul class="flex gap-6">
-        <li class="relative active"><a href="#">Home</a></li>
-        <li class="relative"><a href="#">Products</a></li>
+        <li class="relative active"><a href="./home.php">Home</a></li>
+        <li class="relative"><a href="./products.php">Products</a></li>
         <li class="relative"><a href="#">Transaction</a></li>
       </ul>
       <ul class="flex gap-6">
