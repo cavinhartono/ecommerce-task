@@ -3,7 +3,7 @@ module.exports = {
   content: ["*/*.{html,js,php}"],
   theme: {
     fontFamily: {
-      serif: ["DM Serif Display"],
+      serif: ['"DM Serif Display"', "serif"],
     },
   },
   plugins: [],

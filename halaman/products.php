@@ -19,7 +19,7 @@ require_once("../algoritma/Config.php");
       <ul class="flex gap-6">
         <li class="relative"><a href="./home.php">Home</a></li>
         <li class="relative active"><a href="./products.php">Products</a></li>
-        <li class="relative"><a href="#">Transaction</a></li>
+        <li class="relative"><a href="./transaction.php">Transaction</a></li>
       </ul>
       <ul class="flex gap-6">
         <li class="text-gray-800">
@@ -40,17 +40,18 @@ require_once("../algoritma/Config.php");
         $products = mysqli_query(mysqli_connect("localhost", "root", "", "clothingshop"), "SELECT * FROM products;");
         while ($product = mysqli_fetch_array($products)) {
           echo "
-            <a href='./product.php' class='flex flex-col gap-4 shadow-md rounded-md overflow-hidden'>
-              <img src='./gambar/$product[src]' class='w-full h-[300px] object-cover' />
-              <div class='flex justify-between items-center px-6 py-4'>
-                <div>
-                  <h1 class='font-serif text-2xl text-black text-justify'>$product[name]</h1>
-                  <h1 class='text-lg mt-2 mb-4'>$product[price] - Stock: $product[stock]</h1>
+            <li class='relative shadow-md rounded-md overflow-hidden'>
+              <a href='./product.php?id=$product[id]' class='flex flex-col gap-4'>
+                <img src='./gambar/$product[src]' class='w-full h-[300px] object-cover' />
+                <div class='flex justify-between items-center px-6 py-4'>
+                  <div>
+                    <h1 class='font-serif text-2xl text-black text-justify'>$product[name]</h1>
+                    <h1 class='text-lg mt-2 mb-4'>$product[price] - Stock: $product[stock]</h1>
+                  </div>
                 </div>
-                <button class='text-2xl'>&hearts;</button>
-              </div>
-            </a>
-        ";
+              </a>
+            </li>
+          ";
         }
         ?>
       </ul>

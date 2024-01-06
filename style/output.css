@@ -1,3 +1,57 @@
+@font-face {
+  font-family: Inter;
+
+  src: url("fonts/inter/Inter-Light.ttf");
+
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: Inter;
+
+  src: url(fonts/inter/Inter-Regular.ttf);
+
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Inter;
+
+  src: url(fonts/inter/Inter-Medium.ttf);
+
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: Inter;
+
+  src: url(fonts/inter/Inter-SemiBold.ttf);
+
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: Inter;
+
+  src: url(fonts/inter/Inter-Bold.ttf);
+
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: Inter;
+
+  src: url(fonts/inter/Inter-ExtraBold.ttf);
+
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "DM Serif Display";
+
+  src: url("fonts/dm-display/DMSerifText-Regular.ttf");
+}
+
 /*
 ! tailwindcss v3.4.0 | MIT License | https://tailwindcss.com
 */
@@ -445,7 +499,7 @@ video {
 }
 
 html {
-  font-family: "Inter", sans-serif;
+  font-family: Inter, sans-serif;
   color: #222;
 }
 
@@ -630,6 +684,10 @@ html {
   margin-bottom: 1.5rem;
 }
 
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
 .mb-6 {
   margin-bottom: 1.5rem;
 }
@@ -642,24 +700,20 @@ html {
   margin-top: 2.5rem;
 }
 
-.mt-4 {
-  margin-top: 1rem;
-}
-
-.mb-4 {
-  margin-bottom: 1rem;
-}
-
 .mt-2 {
   margin-top: 0.5rem;
 }
 
-.flex {
-  display: flex;
+.mt-4 {
+  margin-top: 1rem;
 }
 
-.hidden {
-  display: none;
+.inline-block {
+  display: inline-block;
+}
+
+.flex {
+  display: flex;
 }
 
 .h-5\/6 {
@@ -670,20 +724,16 @@ html {
   height: 1.5rem;
 }
 
-.h-60 {
-  height: 15rem;
-}
-
-.h-full {
-  height: 100%;
+.h-\[300px\] {
+  height: 300px;
 }
 
 .h-\[400px\] {
   height: 400px;
 }
 
-.h-\[300px\] {
-  height: 300px;
+.h-full {
+  height: 100%;
 }
 
 .min-h-screen {
@@ -694,20 +744,12 @@ html {
   width: 1.5rem;
 }
 
-.w-60 {
-  width: 15rem;
-}
-
 .w-\[400px\] {
   width: 400px;
 }
 
 .w-full {
   width: 100%;
-}
-
-.w-\[500px\] {
-  width: 500px;
 }
 
 .-translate-y-0 {
@@ -745,16 +787,16 @@ html {
   gap: 2.5rem;
 }
 
+.gap-4 {
+  gap: 1rem;
+}
+
 .gap-6 {
   gap: 1.5rem;
 }
 
 .gap-8 {
   gap: 2rem;
-}
-
-.gap-4 {
-  gap: 1rem;
 }
 
 .overflow-hidden {
@@ -767,10 +809,6 @@ html {
 
 .rounded-sm {
   border-radius: 0.125rem;
-}
-
-.rounded-lg {
-  border-radius: 0.5rem;
 }
 
 .border {
@@ -811,16 +849,13 @@ html {
      object-fit: cover;
 }
 
-.p-6 {
-  padding: 1.5rem;
-}
-
 .p-24 {
   padding: 6rem;
 }
 
-.p-4 {
-  padding: 1rem;
+.px-12 {
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 .px-24 {
@@ -831,6 +866,11 @@ html {
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+}
+
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .px-8 {
@@ -848,49 +888,14 @@ html {
   padding-bottom: 0.5rem;
 }
 
-.py-6 {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.py-8 {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-}
-
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
 
-.py-10 {
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
-}
-
-.px-20 {
-  padding-left: 5rem;
-  padding-right: 5rem;
-}
-
-.px-12 {
-  padding-left: 3rem;
-  padding-right: 3rem;
-}
-
-.px-6 {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
-.py-24 {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .text-justify {
@@ -898,12 +903,17 @@ html {
 }
 
 .font-serif {
-  font-family: DM Serif Display;
+  font-family: "DM Serif Display", serif;
 }
 
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+
+.text-6xl {
+  font-size: 3.75rem;
+  line-height: 1;
 }
 
 .text-lg {
@@ -914,11 +924,6 @@ html {
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
-}
-
-.text-6xl {
-  font-size: 3.75rem;
-  line-height: 1;
 }
 
 .font-medium {
@@ -1013,6 +1018,12 @@ html {
 .peer:placeholder-shown ~ .peer-placeholder-shown\:text-gray-500 {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.peer:hover ~ .peer-hover\:scale-100 {
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .peer:focus ~ .peer-focus\:-translate-y-6 {

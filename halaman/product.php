@@ -37,17 +37,23 @@ require_once("../algoritma/Config.php");
     <div class="relative w-full min-h-screen p-24 flex justify-between items-center gap-10">
       <?php
 
-      $products = mysqli_query(mysqli_connect("localhost", "root", "", "clothingshop"), "SELECT `name`, `src`, ,`price`, `stock`, `desc` FROM products WHERE id=$id;");
+      $id = $_GET['id'];
+      $products = mysqli_query(mysqli_connect("localhost", "root", "", "clothingshop"), "SELECT * FROM products WHERE `id`=$id;");
       while ($product = mysqli_fetch_array($products)) {
+        $price = "Rp. " . number_format($product['price'], 0, ".", ".");
         echo "
           <img src='./gambar/$product[src]' class='w-full h-[400px] object-cover' />
           <div>
             <h1 class='font-serif text-6xl text-black text-justify'>$product[name]</h1>
-            <h1 class='text-2xl mt-4 mb-6'>$product[price] - Stock: $product[stock]</h1>
+            <h1 class='text-2xl mt-4 mb-6'>$price - Stock: $product[stock]</h1>
             $product[desc]
-            <div class='my-4'>
-              <button class='px-12 py-4 bg-blue-500 text-white rounded-sm'>Buy</button>
-              <button class='px-12 py-4'>Cart</button>
+            <div class='my-4 flex'>
+              <form action='./payment.php' method='POST'>
+                <button value='$product[id]' name='product_id' class='px-12 py-4 bg-blue-500 text-white rounded-sm'>Buy</button>
+              </form>
+              <form action='./cart.php' method='POST'>
+                <button value='$product[id]' class='px-12 py-4'>Cart</button>
+              </form>
             </div>
           </div>
         ";
