@@ -1,25 +1,21 @@
 <?php
-
+session_start();
 require_once("../Config.php");
 
 if (isset($_POST['submit'])) {
-  $statement = $db->prepare("SELECT * FROM users WHERE email=:email");
+  $email = $_POST['email'];
+  $password = $_POST['password'];
 
-  $parameter = array(
-    ":email" => filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL),
-  );
+  $statement = $db->prepare("SELECT * FROM `users` WHERE `email` = :email");
+  $statement->bindParam(":email", $email, PDO::PARAM_STR);
+  $statement->execute();
 
-  $statement->execute($parameter);
+  $auth = $statement->fetch(PDO::FETCH_ASSOC);
 
-  $user = $statement->fetch(PDO::FETCH_ASSOC);
-
-  if ($user) {
-    if (password_verify(filter_input(INPUT_POST, $_POST['password'], FILTER_SANITIZE_STRING), $user['password'])) {
-      session_start();
-      $_SESSION["user"] = $user;
-      echo "Sukses";
-    } else {
-      echo "Gagal";
-    }
+  if ($auth && password_verify($password, $auth['password'])) {
+    $_SESSION['auth'] = $auth['id'];
+    header("Location: ../../halaman/home.php");
+  } else {
+    header("Location: ../../halaman/auth/login.php");
   }
 }

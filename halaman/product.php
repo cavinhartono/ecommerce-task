@@ -46,15 +46,14 @@ require_once("../algoritma/Config.php");
           <div>
             <h1 class='font-serif text-6xl text-black text-justify'>$product[name]</h1>
             <h1 class='text-2xl mt-4 mb-6'>$price - Stock: $product[stock]</h1>
-            $product[desc]
             <div class='my-4 flex'>
-              <form action='./payment.php' method='POST'>
-                <button value='$product[id]' name='product_id' class='px-12 py-4 bg-blue-500 text-white rounded-sm'>Buy</button>
-              </form>
               <form action='./cart.php' method='POST'>
-                <button value='$product[id]' class='px-12 py-4'>Cart</button>
+                <input type='number' name='qty' value='1' />
+                <input type='hidden' name='product_id' value='$product[id]' />
+                <button type='submit' name='submit' class='px-12 py-4 bg-blue-500 text-white rounded-sm'>Cart</button>
               </form>
             </div>
+            $product[desc]
           </div>
         ";
       }

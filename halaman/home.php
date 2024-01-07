@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+
+include_once('../algoritma/Config.php');
+session_start();
+
+?>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,10 +30,33 @@
             <span class="w-6 h-6"></span>
           </a>
         </li>
-        <li class="text-gray-800">
-          <a href="#">
-            <span class="w-6 h-6"></span>
-          </a>
+        <li class="relative text-gray-800">
+          <span class="w-6 h-6">Profile</span>
+          <ul id="profile" class="absolute right-0 top-10 bg-black hidden">
+            <?php
+
+            $statement = $db->prepare("SELECT `name` FROM `users` WHERE `id` = :id");
+            $statement->bindParam(':id', $_SESSION['auth'], PDO::PARAM_STR);
+            $statement->execute();
+
+            $users = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            var_dump($users);
+
+            // foreach ($user as $users) {
+            //   $name = explode(" ", $user['name'])[0]; // ambil nama depan
+            //   echo "
+            //     <h1 class='text-2xl font-bold text-gray-800'>Hai, $name.</h1>
+            //     <li class='text-lg text-gray-800'>
+            //       <a href='./profile.php'>Profile</a>
+            //     </li>
+            //     <li class='text-lg text-gray-800'>
+            //       <a href='../algoritma/auth/Logout.php'>Logout</a>
+            //     </li>
+            //   ";
+            // }
+            ?>
+          </ul>
         </li>
       </ul>
     </header>
