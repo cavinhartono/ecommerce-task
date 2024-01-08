@@ -12,14 +12,13 @@
 require_once('../algoritma/Config.php');
 require('../algoritma/auth/Login.php');
 
-if (isset($_POST['submit'])) {
-  $product_id = $_POST['product_id'];
-  var_dump($_POST['qty']);
-  var_dump($user['id']);
+session_start();
 
-  // $statement = $db->prepare("INSERT INTO (`user_id`, `product_id`, `out`) FROM `transactions` VALUES (:user_id, :product_id, :out)");
-  // $statement->bindParam(':product_id', $product_id);
-  // $statement->bindParam(':user_id', );
+if (isset($_POST['submit'])) {
+  $statement = $db->prepare("INSERT INTO (`user_id`, `product_id`, `out`) FROM `transactions` VALUES (:user_id, :product_id, :out)");
+  $statement->bindParam(':product_id', $_POST['product_id']);
+  $statement->bindParam(':user_id', $_SESSION['auth']);
+  $statement->execute();
 }
 
 ?>

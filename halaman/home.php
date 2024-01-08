@@ -41,8 +41,6 @@ session_start();
 
             $users = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-            var_dump($users);
-
             // foreach ($user as $users) {
             //   $name = explode(" ", $user['name'])[0]; // ambil nama depan
             //   echo "
