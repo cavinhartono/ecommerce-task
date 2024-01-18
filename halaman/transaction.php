@@ -14,23 +14,31 @@
 
   $products = "Tidak ada";
 
-  if (!empty($_POST['submit'])) {
-    $carts = $db->prepare("SELECT `carts`.`product_id`, `price`, `carts`.`qty` FROM `products`
-                          INNER JOIN `products`.`id` = `carts`.`product_id`
+  if (isset($_POST['submit'])) {
+    $statement = $db->prepare("SELECT `carts`.`product_id`, `carts`.`qty` * `products`.`price` AS `subtotal`, `carts`.`qty` FROM `products`
+                          INNER JOIN `carts` ON `carts`.`product_id` = `products`.`id`
                           WHERE `user_id` = {$_SESSION['auth']}");
-    $carts->execute();
+    $statement->execute();
 
-    $carts->fetchAll(PDO::FETCH_ASSOC);
+    $carts = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    var_dump($carts);
 
     foreach ($carts as $cart) {
-      $order = $db->prepare("INSERT INTO orders(`total`, `product_id`, `user_id`) VALUES ()");
-      $order->bindParam(":total", ($cart['qty'] * $cart['price']));
+      $order = $db->prepare("INSERT INTO orders(`total`, `product_id`, `user_id`, `qty`, `date`) 
+                          VALUES (`:total`, `:product_id`, `:user_id`, `:qty`, `:date`)");
+      $order->bindParam(":total", $cart['subtotal']);
       $order->bindParam(":qty", $cart['qty']);
       $order->bindParam(":product_id", $cart['product_id']);
       $order->bindParam(":user_id", $_SESSION['auth']);
       $order->bindParam(":date", date('d:m:Y', strtotime('+2 Days')));
 
-      $order->execute();
+      if ($order->execute()) echo "Sukses";
+      else echo "Gagal";
+
+      // $delete_carts = $db->prepare("DELETE FROM `carts` WHERE `user_id` = {$_SESSION['auth']}");
+      // $delete_carts->execute();
+
     }
   }
 

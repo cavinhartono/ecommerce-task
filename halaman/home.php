@@ -4,7 +4,6 @@
 <?php
 
 include_once('../algoritma/Config.php');
-session_start();
 
 ?>
 
