@@ -19,7 +19,7 @@ require_once("../algoritma/Config.php");
       <ul class="flex gap-6">
         <li class="relative active"><a href="#">Home</a></li>
         <li class="relative"><a href="#">Products</a></li>
-        <li class="relative"><a href="#">Transaction</a></li>
+        <li class="relative"><a href="#">About</a></li>
       </ul>
       <ul class="flex gap-6">
         <li class="text-gray-800">

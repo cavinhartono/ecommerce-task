@@ -22,7 +22,7 @@ session_start();
       <ul class="flex gap-6">
         <li class="relative active"><a href="./home.php">Home</a></li>
         <li class="relative"><a href="./products.php">Products</a></li>
-        <li class="relative"><a href="#">Transaction</a></li>
+        <li class="relative"><a href="#">About</a></li>
       </ul>
       <ul class="flex gap-6">
         <li class="text-gray-800">
