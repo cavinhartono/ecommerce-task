@@ -9,7 +9,7 @@
 </head>
 
 <body class="bg-gray-200 flex justify-center items-center min-h-screen">
-  <form action="../algoritma/auth/Login.php" method="post" class="w-[400px] py-12 px-8 rounded-md bg-white shadow-sm">
+  <form action="../algoritma/auth/Login.php?exit=1" method="post" class="w-[400px] py-12 px-8 rounded-md bg-white shadow-sm">
     <h1 class="font-serif text-2xl text-black">Log in Account</h1>
     <div class="relative w-full mt-10 mb-6">
       <input type="text" id="email" name="email" class="peer w-full px-3 py-2 border placeholder:text-transparent" placeholder="email">
@@ -19,9 +19,18 @@
       <input type="password" name="password" id="password" placeholder="Password" class="peer w-full px-3 py-2 border placeholder:text-transparent">
       <label for="password" class="absolute left-0 ml-1 -translate-y-6 text-sm duration-100 ease-linear peer-placeholder-shown:translate-y-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:-translate-y-6 peer-focus:text-sm">Password</label>
     </div>
-    <button type="submit" name="submit" class="bg-blue-500 w-full py-2 text-md text-white rounded-sm">Continue</button>
+    <button type="submit" name="submit" id="isExit" value="1" class="bg-blue-500 w-full py-2 text-md text-white rounded-sm">Continue</button>
     <p class="my-4 text-sm">Do you have'nt account? <a href="./register.php" class="text-blue-500">Register</a>.</p>
   </form>
 </body>
+
+<script>
+  let exit = document.querySelector("#isExit").value;
+  if (exit > 3) {
+    alert('Anda dikeluarkan karena sudah 3 kali kesalahan');
+    window.close();
+  }
+  exit++;
+</script>
 
 </html>

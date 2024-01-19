@@ -29,6 +29,8 @@ $statement->execute();
 
 $carts = $statement->fetchAll(PDO::FETCH_ASSOC);
 
+$subtotal = 0;
+
 ?>
 
 <body>
@@ -39,14 +41,14 @@ $carts = $statement->fetchAll(PDO::FETCH_ASSOC);
           <img src="./gambar/<?= $cart['src'] ?>" class="w-[100px] h-[100px]">
           <div class="flex flex-col gap-4">
             <h1 class="text-black text-lg font-serif"><?= $cart['name'] ?></h1>
-            <input type='hidden' name='product_id' value='<?= $cart['id'] ?>' />
-            Rp. <input type="text" class="text-gray-800 text-md" name="price" value="<?= number_format($cart['price'], 0, ".", ".") ?>" disabled> X
-            <input type="text" class="text-gray-800 text-md" name="qty" value="<?= $cart['qty'] ?>" disabled>
+            <p class="text-grey-800 text-md">Rp. <?= number_format($cart['price'], 0, ".", ".") ?> X <?= $cart['qty'] ?></p>
           </div>
         </li>
+        <?php $subtotal += $cart['price'] * $cart['qty'] ?>
       <?php endforeach; ?>
     </ul>
-    <button name='submit'>Buy</button>
+    <h1 class="text-black text-lg">Total, Rp. <?= number_format($subtotal, 0, ".", ".") ?></h1>
+    <button name='submit' <?php if (empty($carts)) : ?> disabled <?php endif; ?>>Buy</button>
   </form>
 </body>
 

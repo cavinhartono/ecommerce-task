@@ -22,26 +22,19 @@
 
     $carts = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    var_dump($carts);
-
     foreach ($carts as $cart) {
-      $order = $db->prepare("INSERT INTO orders(`total`, `product_id`, `user_id`, `qty`, `date`) 
-                          VALUES (`:total`, `:product_id`, `:user_id`, `:qty`, `:date`)");
+      $order = $db->prepare("INSERT INTO orders(`total`, `product_id`, `user_id`, `qty`) 
+                          VALUES (:total, :product_id, :user_id, :qty)");
       $order->bindParam(":total", $cart['subtotal']);
       $order->bindParam(":qty", $cart['qty']);
       $order->bindParam(":product_id", $cart['product_id']);
       $order->bindParam(":user_id", $_SESSION['auth']);
-      $order->bindParam(":date", date('d:m:Y', strtotime('+2 Days')));
+      $order->execute();
 
-      if ($order->execute()) echo "Sukses";
-      else echo "Gagal";
-
-      // $delete_carts = $db->prepare("DELETE FROM `carts` WHERE `user_id` = {$_SESSION['auth']}");
-      // $delete_carts->execute();
-
+      $delete_carts = $db->prepare("DELETE FROM `carts` WHERE `user_id` = {$_SESSION['auth']}");
+      $delete_carts->execute();
     }
   }
-
   ?>
 </body>
 

@@ -3,4 +3,4 @@
 session_start();
 session_destroy();
 
-header('../../halaman/login.php');
+header('Location: ../../halaman/login.php');

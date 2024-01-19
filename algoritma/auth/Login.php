@@ -1,6 +1,8 @@
 <?php
 require_once("../Config.php");
 
+$exit = 0;
+
 if (isset($_POST['submit'])) {
   $email = $_POST['email'];
   $password = $_POST['password'];
@@ -15,6 +17,6 @@ if (isset($_POST['submit'])) {
     $_SESSION['auth'] = $auth['id'];
     header("Location: ../../halaman/home.php");
   } else {
-    header("Location: ../../halaman/auth/login.php");
+    header("Location: ../../halaman/login.php");
   }
 }
