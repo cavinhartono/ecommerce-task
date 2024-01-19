@@ -25,35 +25,14 @@ include_once('../algoritma/Config.php');
       </ul>
       <ul class="flex gap-6">
         <li class="text-gray-800">
-          <a href="#">
-            <span class="w-6 h-6"></span>
+          <a href="./cart.php">
+            <span class="w-6 h-6">Cart</span>
           </a>
         </li>
         <li class="relative text-gray-800">
-          <span class="w-6 h-6">Profile</span>
-          <ul id="profile" class="absolute right-0 top-10 bg-black hidden">
-            <?php
-
-            $statement = $db->prepare("SELECT `name` FROM `users` WHERE `id` = :id");
-            $statement->bindParam(':id', $_SESSION['auth'], PDO::PARAM_STR);
-            $statement->execute();
-
-            $users = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-            // foreach ($user as $users) {
-            //   $name = explode(" ", $user['name'])[0]; // ambil nama depan
-            //   echo "
-            //     <h1 class='text-2xl font-bold text-gray-800'>Hai, $name.</h1>
-            //     <li class='text-lg text-gray-800'>
-            //       <a href='./profile.php'>Profile</a>
-            //     </li>
-            //     <li class='text-lg text-gray-800'>
-            //       <a href='../algoritma/auth/Logout.php'>Logout</a>
-            //     </li>
-            //   ";
-            // }
-            ?>
-          </ul>
+          <a href="./profile.php">
+            <span class="w-6 h-6">Profile</span>
+          </a>
         </li>
       </ul>
     </header>
