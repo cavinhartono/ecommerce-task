@@ -1,7 +1,7 @@
 <?php
 require_once("../Config.php");
 
-$exit = 0;
+$_SESSION['counter'] = 1;
 
 if (isset($_POST['submit'])) {
   $email = $_POST['email'];
